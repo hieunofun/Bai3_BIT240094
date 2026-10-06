@@ -26,7 +26,12 @@ export default function StudentFormScreen() {
     const trimmedName = studentName.trim();
     const trimmedStudentId = studentId.trim();
 
-    if (!trimmedName || !trimmedStudentId) {
+    if (!/^B[A-Z]{2}(2[2-6])[0-9]{4}$/.test(trimmedStudentId)) {
+      setErrorMessage('MSSV không hợp lệ. Ví dụ đúng: BIT240094');
+      return;
+    }
+
+    if (!trimmedName) {
       setErrorMessage('Vui lòng nhập đầy đủ họ tên và mã số sinh viên.');
       return;
     }
